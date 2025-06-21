@@ -12,7 +12,7 @@ with open("encoders.pkl", "rb") as f:
 
 # Dynamically get valid dropdown options from encoders
 freq_options = encoders['Reading_Frequency'].classes_.tolist()
-length_options = encoders['Book_Length'].classes_.tolist()
+length_options = [opt.replace("\u2013", "-").replace("\u2014", "-") for opt in encoders['Book_Length'].classes_.tolist()]
 mood_options = encoders['Mood'].classes_.tolist()
 
 # Genre checkbox options
@@ -25,7 +25,7 @@ def main():
         <style>
         .title {
             text-align: center;
-            color: #333333;
+            color: #ffffff;
         }
         .footer {
             text-align: center;
@@ -51,8 +51,12 @@ def main():
 
     if submitted:
         try:
+            # Re-encode user inputs
+            original_length_options = encoders['Book_Length'].classes_.tolist()
+            length_clean = original_length_options[length_options.index(length)]
+
             freq_enc = encoders['Reading_Frequency'].transform([freq])[0]
-            length_enc = encoders['Book_Length'].transform([length])[0]
+            length_enc = encoders['Book_Length'].transform([length_clean])[0]
             mood_enc = encoders['Mood'].transform([mood])[0]
 
             genre_flags = [1 if g in selected_genres else 0 for g in genres]
