@@ -13,11 +13,11 @@ import pickle
 import numpy as np
 
 # Load model, scaler, encoders
-with open("/content/model.pkl", "rb") as f:
+with open("model.pkl", "rb") as f:
     model = pickle.load(f)
-with open("/content/scaler.pkl", "rb") as f:
+with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
-with open("/content/encoders.pkl", "rb") as f:
+with open("encoders.pkl", "rb") as f:
     encoders = pickle.load(f)
 
 # Genre checkbox options
