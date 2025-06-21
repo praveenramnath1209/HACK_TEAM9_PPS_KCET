@@ -1,0 +1,13 @@
+Problem Statement: Predict Book Genre Using Reader Preferences
+
+Objective:
+Develop a machine learning model that predicts a user’s most preferred book genre based on their reading habits and preferences.
+
+Dataset:
+Collected through a Google Form with questions including reading frequency, book length preference, favorite author, mood while reading, and willingness to read certain genres. Only some users provided their actual genre preference, making this a semi-supervised learning problem.
+
+Approach:
+Use self-training or co-training techniques to handle partially labeled data, then build a model to predict the most likely genre (Fiction, Sci-Fi, Biography, etc.) for each user.
+
+Tools:
+Python, Scikit-learn, Pandas, Streamlit for UI (final deployment), Google Colab for training.
