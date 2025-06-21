@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Load model, scaler, encoders
+
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 with open("scaler.pkl", "rb") as f:
@@ -10,12 +10,12 @@ with open("scaler.pkl", "rb") as f:
 with open("encoders.pkl", "rb") as f:
     encoders = pickle.load(f)
 
-# Dynamically get valid dropdown options from encoders
+
 freq_options = [opt.encode('latin1').decode('utf-8') for opt in encoders['Reading_Frequency'].classes_.tolist()]
 length_options = [opt.encode('latin1').decode('utf-8') for opt in encoders['Book_Length'].classes_.tolist()]
 mood_options = [opt.encode('latin1').decode('utf-8') for opt in encoders['Mood'].classes_.tolist()]
 
-# Genre checkbox options
+
 genres = ['Fiction', 'Sci-Fi', 'Self-help', 'Biography', 'Thriller', 'Fantasy']
 
 def main():
@@ -51,7 +51,7 @@ def main():
 
     if submitted:
         try:
-            # Re-encode user inputs
+        
             freq_enc = encoders['Reading_Frequency'].transform([freq])[0]
             length_enc = encoders['Book_Length'].transform([length])[0]
             mood_enc = encoders['Mood'].transform([mood])[0]
